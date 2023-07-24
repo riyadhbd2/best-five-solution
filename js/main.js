@@ -17,7 +17,7 @@ function addList(id){
         olField.appendChild(liCreateField);
         playerCount++;
     }
-    
+
     // get player number depend on selection function
 
     function getPlayerNumber(){
@@ -25,6 +25,15 @@ function addList(id){
         const liNumber = liField.length;
         return liNumber;  
     }
+
+// get inputElement and make integer
+
+function getInputElement(id){
+    const elementField = document.getElementById(id);
+    const elementString = elementField.value;
+    const element = parseInt(elementString);
+    return element;
+}
 
 // Players selection buttons
 
@@ -65,16 +74,29 @@ document.getElementById('btn-iniesta').addEventListener('click',function(){
 
 })
 
-// calculate button
+//button calculate expenses
 
-document.getElementById('calculate').addEventListener('click',function(){
-    const perPlayerCostField = document.getElementById('per-player');
-    const perPlayerCostString = perPlayerCostField.value;
-    const perPlayerCost = parseInt(perPlayerCostString);
+document.getElementById('btn-calculate').addEventListener('click',function(){
+    const perPlayerCost = getInputElement('per-player');
 
     const playerNumber = getPlayerNumber();
 
     const expensesField = document.getElementById('expenses');
-    expensesField.innerText = perPlayerCost * playerNumber;
+    const playersCost = perPlayerCost * playerNumber
+    expensesField.innerText = playersCost;
     
+})
+
+
+
+// button calculate total
+document.getElementById('btn-calculate-total').addEventListener('click',function(){
+    const coachMoney = getInputElement('coach');
+    const managerMoney = getInputElement('manager');
+    const playerExpensesField = document.getElementById('expenses');
+    const playerExpensesString = playerExpensesField.innerText;
+    const playerExpenses = parseInt(playerExpensesString);
+
+    const totalcalculate = document.getElementById('total-calculate');
+    totalcalculate.innerText = coachMoney + managerMoney + playerExpenses;
 })
