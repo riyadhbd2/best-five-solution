@@ -1,15 +1,22 @@
-function addList(id){
-    const nameField = document.getElementById(id);
-    const name = nameField.innerText;
-
-    const olField = document.getElementById('list');
-    const liCreateField = document.createElement('li');
-    const textNode = document.createTextNode(name);
-
-    liCreateField.appendChild(textNode);
-    olField.appendChild(liCreateField);
-
+function enoughSelection(){
+    const totalLi = document.getElementsByTagName('li'); 
+    if(totalLi.length == 5){
+        return alert("can't select more than 5");
+    }
 }
+
+function addList(id){
+        const nameField = document.getElementById(id);
+        const name = nameField.innerText;
+
+        const olField = document.getElementById('list');
+        const liCreateField = document.createElement('li');
+        const textNode = document.createTextNode(name);
+
+        liCreateField.appendChild(textNode);
+        olField.appendChild(liCreateField);
+        enoughSelection();
+    }
 
 document.getElementById('btn-messi').addEventListener('click',function(){
     addList('messi-name');
