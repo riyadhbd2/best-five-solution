@@ -1,11 +1,9 @@
-function enoughSelection(){
-    const totalLi = document.getElementsByTagName('li'); 
-    if(totalLi.length == 5){
-        return alert("can't select more than 5");
-    }
-}
-
+let itemCount = 0;
 function addList(id){
+    if (itemCount >= 5){
+        alert("You can not select more than 5 players");
+        return;
+    }
         const nameField = document.getElementById(id);
         const name = nameField.innerText;
 
@@ -15,7 +13,8 @@ function addList(id){
 
         liCreateField.appendChild(textNode);
         olField.appendChild(liCreateField);
-        enoughSelection();
+        
+        itemCount++;
     }
 
 document.getElementById('btn-messi').addEventListener('click',function(){
